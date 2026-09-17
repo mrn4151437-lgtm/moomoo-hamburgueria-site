@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Moomoo Hamburgueria Ouro Preto — hambúrgueres artesanais, sabor marcante e experiência especial em Bauxita, Ouro Preto - MG.">
+  <title>Moomoo Hamburgueria | Ouro Preto - MG</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0b0c;
+      --surface:#131315;
+      --surface2:#19191c;
+      --text:#fff;
+      --muted:#a9a9af;
+      --accent:#ff5a1f;
+      --accent2:#ff8a3d;
+      --line:rgba(255,255,255,.09);
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:"DM Sans",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+
+    .container{width:min(var(--max),92%);margin:auto}
+
+    header{
+      position:fixed;
+      top:0;left:0;right:0;
+      z-index:50;
+      background:rgba(11,11,12,.82);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav{
+      height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:25px;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:11px;
+      font-family:Montserrat,sans-serif;
+      font-weight:900;
+      font-size:22px;
+      letter-spacing:-1px;
+    }
+
+    .logo-mark{
+      width:39px;height:39px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,var(--accent),#ff9b50);
+      color:#111;
+      font-size:17px;
+      box-shadow:0 8px 30px rgba(255,90,31,.22);
+    }
+
+    nav{display:flex;gap:28px;color:#d8d8dc;font-size:14px;font-weight:600}
+    nav a{transition:.2s}
+    nav a:hover{color:#fff}
+
+    .nav-btn,.hero-btn,.contact-btn{
+      background:var(--accent);
+      color:#fff;
+      padding:12px 18px;
+      border-radius:12px;
+      font-weight:700;
+      font-size:14px;
+      transition:.2s;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .nav-btn:hover,.hero-btn:hover,.contact-btn:hover{
+      transform:translateY(-2px);
+      background:var(--accent2);
+    }
+
+    .hero{
+      min-height:760px;
+      padding:150px 0 90px;
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      background:
+        radial-gradient(circle at 80% 30%,rgba(255,90,31,.18),transparent 32%),
+        radial-gradient(circle at 15% 85%,rgba(255,138,61,.08),transparent 30%),
+        var(--bg);
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      width:550px;height:550px;
+      right:-230px;top:100px;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.06);
+      box-shadow:0 0 0 70px rgba(255,255,255,.015),0 0 0 140px rgba(255,255,255,.01);
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      align-items:center;
+      gap:60px;
+      position:relative;
+      z-index:2;
+    }
+
+    .eyebrow{
+      color:#ff9b50;
+      text-transform:uppercase;
+      letter-spacing:2.5px;
+      font-weight:800;
+      font-size:12px;
+      margin-bottom:18px;
+    }
+
+    h1,h2,h3{font-family:Montserrat,sans-serif;line-height:1.05}
+    h1{
+      font-size:clamp(44px,6vw,76px);
+      letter-spacing:-4px;
+      max-width:760px;
+    }
+    h1 span{color:var(--accent)}
+
+    .hero p{
+      color:var(--muted);
+      font-size:18px;
+      max-width:570px;
+      margin:25px 0 30px;
+    }
+
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+
+    .secondary-btn{
+      border:1px solid var(--line);
+      padding:12px 18px;
+      border-radius:12px;
+      color:#eee;
+      font-weight:700;
+      font-size:14px;
+      background:rgba(255,255,255,.03);
+    }
+
+    .burger-visual{
+      min-height:420px;
+      position:relative;
+      display:grid;
+      place-items:center;
+    }
+
+    .burger-card{
+      width:min(390px,90%);
+      aspect-ratio:1/1;
+      border-radius:38px;
+      background:
+        radial-gradient(circle at 50% 45%,rgba(255,111,45,.25),transparent 45%),
+        linear-gradient(145deg,#1e1e22,#0e0e10);
+      border:1px solid var(--line);
+      box-shadow:0 35px 100px rgba(0,0,0,.55);
+      display:grid;
+      place-items:center;
+      transform:rotate(3deg);
+    }
+
+    .burger-icon{
+      font-size:155px;
+      filter:drop-shadow(0 25px 25px rgba(0,0,0,.5));
+      transform:rotate(-3deg);
+    }
+
+    .floating{
+      position:absolute;
+      padding:12px 15px;
+      background:rgba(255,255,255,.07);
+      backdrop-filter:blur(12px);
+      border:1px solid var(--line);
+      border-radius:14px;
+      font-size:13px;
+      font-weight:700;
+    }
+    .floating.one{top:30px;right:4px}
+    .floating.two{bottom:35px;left:0}
+
+    .trust{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:#101012;
+    }
+
+    .trust-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+    }
+
+    .trust-item{
+      padding:25px;
+      text-align:center;
+      border-right:1px solid var(--line);
+    }
+    .trust-item:last-child{border-right:0}
+    .trust-item strong{display:block;font-size:15px}
+    .trust-item span{font-size:12px;color:var(--muted)}
+
+    section{padding:100px 0}
+
+    .section-head{
+      max-width:720px;
+      margin-bottom:45px;
+    }
+    .section-head .eyebrow{margin-bottom:12px}
+    h2{font-size:clamp(32px,4vw,48px);letter-spacing:-2px}
+    .section-head p{color:var(--muted);margin-top:15px}
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:70px;
+      align-items:center;
+    }
+
+    .about-card{
+      padding:38px;
+      background:linear-gradient(145deg,#171719,#101012);
+      border:1px solid var(--line);
+      border-radius:26px;
+    }
+
+    .about-card .big{
+      font-family:Montserrat,sans-serif;
+      font-size:80px;
+      font-weight:900;
+      color:var(--accent);
+      line-height:1;
+    }
+
+    .about-card h3{font-size:25px;margin:18px 0 10px}
+    .about-card p{color:var(--muted)}
+
+    .about-copy p{color:var(--muted);margin:18px 0}
+    .about-list{list-style:none;margin-top:25px}
+    .about-list li{
+      padding:13px 0;
+      border-bottom:1px solid var(--line);
+      font-weight:600;
+    }
+    .about-list li::before{content:"✓";color:var(--accent);margin-right:10px}
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .card{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:28px;
+      transition:.25s;
+    }
+    .card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(255,90,31,.45);
+    }
+
+    .card-number{
+      font-size:12px;
+      color:var(--accent);
+      font-weight:800;
+      letter-spacing:1px;
+    }
+    .card h3{font-size:21px;margin:28px 0 10px}
+    .card p{color:var(--muted);font-size:14px}
+
+    .location{
+      background:#101012;
+    }
+
+    .location-grid{
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:25px;
+    }
+
+    .contact-card,.map-card{
+      border:1px solid var(--line);
+      border-radius:25px;
+      overflow:hidden;
+      background:var(--surface);
+    }
+
+    .contact-card{padding:35px}
+    .contact-card h3{font-size:28px;margin-bottom:25px}
+
+    .contact-row{
+      padding:18px 0;
+      border-bottom:1px solid var(--line);
+    }
+    .contact-row small{color:var(--muted);display:block;margin-bottom:4px}
+    .contact-row strong{font-size:15px}
+
+    .contact-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
+    .map-card iframe{width:100%;height:100%;min-height:390px;border:0;filter:grayscale(.85) contrast(1.05)}
+
+    .company{
+      padding-top:20px;
+    }
+
+    .company-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+
+    .company-item{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:20px;
+    }
+    .company-item small{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:1px}
+    .company-item strong{display:block;margin-top:7px;font-size:14px}
+
+    .cta{
+      padding:35px 0 100px;
+    }
+
+    .cta-box{
+      border-radius:28px;
+      padding:55px;
+      background:
+        radial-gradient(circle at 80% 0%,rgba(255,255,255,.14),transparent 35%),
+        linear-gradient(120deg,#ff5a1f,#e8450e);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:30px;
+    }
+    .cta-box h2{max-width:650px}
+    .cta-box p{margin-top:10px;color:rgba(255,255,255,.82)}
+    .cta-box .secondary-btn{background:#fff;color:#151515;border:0}
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:35px 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .footer-grid{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    @media(max-width:900px){
+      nav{display:none}
+      .hero-grid,.about-grid,.location-grid{grid-template-columns:1fr}
+      .hero{min-height:auto}
+      .burger-visual{min-height:350px}
+      .cards{grid-template-columns:1fr}
+      .company-grid{grid-template-columns:repeat(2,1fr)}
+    }
+
+    @media(max-width:600px){
+      .nav{height:68px}
+      .nav-btn{display:none}
+      .hero{padding:125px 0 65px}
+      h1{letter-spacing:-2.5px}
+      .hero p{font-size:16px}
+      .burger-card{width:310px}
+      .burger-icon{font-size:120px}
+      .trust-grid{grid-template-columns:1fr}
+      .trust-item{border-right:0;border-bottom:1px solid var(--line)}
+      .trust-item:last-child{border-bottom:0}
+      section{padding:70px 0}
+      .about-card{padding:28px}
+      .about-card .big{font-size:62px}
+      .company-grid{grid-template-columns:1fr}
+      .cta-box{padding:35px 25px;display:block}
+      .cta-box .secondary-btn{margin-top:22px}
+      .map-card iframe{min-height:300px}
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#inicio" class="logo">
+      <span class="logo-mark">M</span>
+      MOOMOO
+    </a>
+
+    <nav>
+      <a href="#sobre">A Moomoo</a>
+      <a href="#diferenciais">Diferenciais</a>
+      <a href="#localizacao">Localização</a>
+    </nav>
+
+    <a class="nav-btn" href="tel:+553171329809">Fale conosco</a>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">Moomoo Hamburgueria • Ouro Preto</div>
+      <h1>Hambúrguer de verdade.<br><span>Sabor de outro nível.</span></h1>
+      <p>
+        Uma experiência feita para quem valoriza sabor, qualidade e aquele
+        hambúrguer que dá vontade de pedir de novo.
+      </p>
+
+      <div class="hero-actions">
+        <a class="hero-btn" href="#localizacao">Encontrar a Moomoo</a>
+        <a class="secondary-btn" href="#sobre">Conheça a hamburgueria</a>
+      </div>
+    </div>
+
+    <div class="burger-visual">
+      <div class="burger-card">
+        <div class="burger-icon">🍔</div>
+      </div>
+      <div class="floating one">🔥 Sabor marcante</div>
+      <div class="floating two">📍 Bauxita • Ouro Preto</div>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="container trust-grid">
+    <div class="trust-item">
+      <strong>Experiência especial</strong>
+      <span>Um ambiente pensado para você</span>
+    </div>
+    <div class="trust-item">
+      <strong>Hambúrgueres</strong>
+      <span>Uma proposta focada em sabor</span>
+    </div>
+    <div class="trust-item">
+      <strong>Ouro Preto • MG</strong>
+      <span>Estamos na Bauxita</span>
+    </div>
+  </div>
+</div>
+
+<section id="sobre">
+  <div class="container about-grid">
+    <div class="about-card">
+      <div class="big">M</div>
+      <h3>Moomoo Hamburgueria</h3>
+      <p>
+        Uma hamburgueria localizada em Bauxita, Ouro Preto, com uma proposta
+        moderna e focada em proporcionar uma experiência marcante.
+      </p>
+    </div>
+
+    <div class="about-copy">
+      <div class="eyebrow">Sobre a Moomoo</div>
+      <h2>Mais que um hambúrguer. Uma experiência.</h2>
+      <p>
+        A Moomoo Hamburgueria nasceu para reunir sabor, personalidade e uma
+        experiência contemporânea em um só lugar.
+      </p>
+      <p>
+        Seja para uma refeição rápida, um encontro ou aquele momento de
+        aproveitar um bom hambúrguer, a proposta é tornar cada visita especial.
+      </p>
+
+      <ul class="about-list">
+        <li>Localização em Bauxita, Ouro Preto</li>
+        <li>Proposta moderna e especializada</li>
+        <li>Atendimento próximo e experiência diferenciada</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="diferenciais">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Por que Moomoo?</div>
+      <h2>Uma identidade própria em cada detalhe.</h2>
+      <p>
+        Da proposta visual à experiência, tudo foi pensado para representar
+        uma hamburgueria atual, autêntica e marcante.
+      </p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <span class="card-number">01 / EXPERIÊNCIA</span>
+        <h3>Personalidade</h3>
+        <p>
+          Uma marca com identidade forte, comunicação moderna e uma experiência
+          que foge do comum.
+        </p>
+      </article>
+
+      <article class="card">
+        <span class="card-number">02 / SABOR</span>
+        <h3>Foco no hambúrguer</h3>
+        <p>
+          Uma proposta dedicada ao universo dos hambúrgueres e aos momentos
+          que combinam com uma boa refeição.
+        </p>
+      </article>
+
+      <article class="card">
+        <span class="card-number">03 / LOCAL</span>
+        <h3>Em Ouro Preto</h3>
+        <p>
+          Estamos na região da Bauxita, com localização fácil para quem está
+          em Ouro Preto e região.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="location" id="localizacao">
+  <div class="container location-grid">
+    <div class="contact-card">
+      <div class="eyebrow">Visite a Moomoo</div>
+      <h3>Estamos esperando você.</h3>
+
+      <div class="contact-row">
+        <small>Endereço</small>
+        <strong>Rua Antonio de Padua Araujo, 2 — Loja A<br>Bauxita, Ouro Preto — MG<br>CEP 35402-248</strong>
+      </div>
+
+      <div class="contact-row">
+        <small>Telefone</small>
+        <strong>(31) 7132-9809</strong>
+      </div>
+
+      <div class="contact-row">
+        <small>E-mail</small>
+        <strong>moomoohamburgueria@gmail.com</strong>
+      </div>
+
+      <div class="contact-actions">
+        <a class="contact-btn" href="tel:+553171329809">Ligar agora</a>
+        <a class="secondary-btn" target="_blank"
+           href="https://www.google.com/maps/search/?api=1&query=Rua+Antonio+de+Padua+Araujo+2+Loja+A+Bauxita+Ouro+Preto+MG">
+          Abrir no Maps
+        </a>
+      </div>
+    </div>
+
+    <div class="map-card">
+      <iframe
+        src="https://www.google.com/maps?q=Rua%20Antonio%20de%20Padua%20Araujo,%202,%20Bauxita,%20Ouro%20Preto,%20MG,%2035402248,%20Brasil&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Localização da Moomoo Hamburgueria">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<section class="company">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Informações da empresa</div>
+      <h2>Dados da Moomoo</h2>
+      <p>Informações cadastrais apresentadas de acordo com os dados fornecidos.</p>
+    </div>
+
+    <div class="company-grid">
+      <div class="company-item">
+        <small>Razão social</small>
+        <strong>MOOMOO HAMBURGUERIA LTDA</strong>
+      </div>
+
+      <div class="company-item">
+        <small>Nome fantasia</small>
+        <strong>Moomoo Hamburgueria Ouro Preto</strong>
+      </div>
+
+      <div class="company-item">
+        <small>Situação cadastral</small>
+        <strong>Ativa</strong>
+      </div>
+
+      <div class="company-item">
+        <small>Data de abertura</small>
+        <strong>10/11/2025</strong>
+      </div>
+
+      <div class="company-item">
+        <small>Natureza jurídica</small>
+        <strong>Sociedade Empresária Limitada</strong>
+      </div>
+
+      <div class="company-item">
+        <small>Capital social</small>
+        <strong>R$ 50.000,00</strong>
+      </div>
+
+      <div class="company-item">
+        <small>Regime tributário</small>
+        <strong>Simples Nacional</strong>
+      </div>
+
+      <div class="company-item">
+        <small>Porte</small>
+        <strong>Empresa de Pequeno Porte</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="cta-box">
+      <div>
+        <h2>Seu próximo hambúrguer pode ser na Moomoo.</h2>
+        <p>Conheça nossa localização em Bauxita, Ouro Preto.</p>
+      </div>
+      <a class="secondary-btn" target="_blank"
+         href="https://www.google.com/maps/search/?api=1&query=Rua+Antonio+de+Padua+Araujo+2+Loja+A+Bauxita+Ouro+Preto+MG">
+        Ver localização
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div><strong style="color:#fff">MOOMOO HAMBURGUERIA</strong><br>Ouro Preto • Minas Gerais</div>
+    <div>© 2026 Moomoo Hamburgueria. Todos os direitos reservados.</div>
+  </div>
+</footer>
+
+</body>
+</html>
